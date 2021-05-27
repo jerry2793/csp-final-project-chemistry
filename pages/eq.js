@@ -7,15 +7,23 @@ import {
   Button,
   Card,
   CardContent,
+  Grid,
   Paper,
   Typography,
 } from "@material-ui/core";
+
+import AvTimerIcon from "@material-ui/icons/AvTimer";
+import AlarmOnIcon from "@material-ui/icons/AlarmOn";
+
 import CompoundsList from "../components/CompoundsList";
 import { useDispatch, useSelector } from "react-redux";
 import { NEW_PROD, NEW_RCTN } from "../reducers/equation";
 
+import { balance } from "../actions/equation";
+
 function Equation() {
   const { reactants, products } = useSelector((state) => state.equation);
+  const [balanced, setBalanced] = useState("");
   const dispatch = useDispatch();
 
   return (
@@ -47,9 +55,25 @@ function Equation() {
         </Card>
 
         <Paper className={styles.output}>
-          <Typography>Initial Equation:</Typography>
-          <CompoundsList list={reactants} />
-          <CompoundsList list={products} />
+          <Typography variant="h5">Compounds Entered</Typography>
+          <Grid style={{ display: "flex", flexWrap: "wrap", margin: "auto" }}>
+            <Paper style={{ margin: "10px", padding: "10px" }}>
+              <Typography variant="h6">Reactants</Typography>
+              <CompoundsList Icon={AvTimerIcon} list={reactants} />
+            </Paper>
+            <Paper style={{ margin: "10px", padding: "10px" }}>
+              <Typography variant="h6">Products</Typography>
+              <CompoundsList Icon={AlarmOnIcon} list={products} />
+            </Paper>
+            <Button
+              fullWidth
+              variant="contained"
+              onClick={() => setBalanced(balance(reactants, products))}
+            >
+              Balance
+            </Button>
+          </Grid>
+          <Typography></Typography>
         </Paper>
       </main>
     </div>

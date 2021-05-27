@@ -1,12 +1,21 @@
 .container {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card {
   width: 300px;
+  height: min-content;
   margin: 20px;
 }
 
 .output {
   padding: 20px;
+  width: 400px;
+  text-align: center;
+}
+
+.equation {
+  width: max-content;
 }

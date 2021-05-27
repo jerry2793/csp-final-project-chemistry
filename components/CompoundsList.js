@@ -5,6 +5,7 @@ import {
   CardContent,
   List,
   ListItem,
+  ListItemIcon,
   ListItemText,
   Paper,
   Typography,
@@ -27,12 +28,20 @@ const renderEquationText = (compoundsList) => {
   return result;
 };
 
-const BalancedEquationOutput = ({ list }) => {
+const BalancedEquationOutput = ({ list, Icon }) => {
   return (
     <List key={list}>
       {list.map((cmpd) => {
         return (
-          <ListItem>
+          <ListItem button>
+            {Icon ? (
+              <ListItemIcon>
+                <Icon />
+              </ListItemIcon>
+            ) : (
+              ""
+            )}
+
             <ListItemText primary={cmpd} />
           </ListItem>
         );

@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <div>
       <h1 className={styles.title}>
-        Welcome to <Link href="/">Chemistry Cheater App</Link>!
+        Welcome to the <Link href="/">Chemistry Cheater App</Link>!
       </h1>
       <p className={styles.description}>
         {router.asPath === "/"
