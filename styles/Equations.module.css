@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+}
+
+.card {
+  width: 300px;
+  margin: 20px;
+}
+
+.output {
+  padding: 20px;
+}
