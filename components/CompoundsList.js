@@ -28,7 +28,6 @@ const renderEquationText = (compoundsList) => {
 };
 
 const BalancedEquationOutput = ({ list }) => {
-  console.log("balanced eq output rendered");
   return (
     <List key={list}>
       {list.map((cmpd) => {

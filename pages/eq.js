@@ -11,14 +11,12 @@ import {
   Typography,
 } from "@material-ui/core";
 import CompoundsList from "../components/CompoundsList";
+import { useDispatch, useSelector } from "react-redux";
+import { NEW_PROD, NEW_RCTN } from "../reducers/equation";
 
 function Equation() {
-  const [reactants, setRctn] = useState([]);
-  const [products, setProd] = useState([]);
-  const equation = {
-    reactants: [],
-    products: [],
-  };
+  const { reactants, products } = useSelector((state) => state.equation);
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -31,9 +29,7 @@ function Equation() {
             <Typography variant="h5">Add a Reactant</Typography>
             <CompoundForm
               onSubmit={(cmpd) => {
-                equation.reactants.push(cmpd);
-                setRctn(equation.reactants);
-                console.log(reactants);
+                dispatch({ type: NEW_RCTN, payload: cmpd });
               }}
             />
           </CardContent>
@@ -44,8 +40,7 @@ function Equation() {
             <Typography variant="h5">Add a Product</Typography>
             <CompoundForm
               onSubmit={(cmpd) => {
-                equation.products.push(cmpd);
-                setProd(equation.products);
+                dispatch({ type: NEW_PROD, payload: cmpd });
               }}
             />
           </CardContent>
@@ -54,6 +49,7 @@ function Equation() {
         <Paper className={styles.output}>
           <Typography>Initial Equation:</Typography>
           <CompoundsList list={reactants} />
+          <CompoundsList list={products} />
         </Paper>
       </main>
     </div>
