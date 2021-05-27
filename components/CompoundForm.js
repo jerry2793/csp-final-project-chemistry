@@ -9,14 +9,20 @@ import {
 
 const CompoundForm = ({ onSubmit }) => {
   const [cmpd, setCmpd] = useState("");
+  const [error, setError] = useState("");
 
   return (
     <div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          onSubmit(cmpd);
-          setCmpd("");
+          if (cmpd[0] === cmpd[0].toUpperCase()) {
+            onSubmit(cmpd);
+            setCmpd("");
+            setError("");
+          } else {
+            setError("Must be a valid compound!");
+          }
         }}
       >
         {/* <TextField
@@ -30,14 +36,16 @@ const CompoundForm = ({ onSubmit }) => {
         /> */}
         <TextField
           value={cmpd}
+          error={error}
+          helperText={error}
           onChange={(e) => {
             setCmpd(e.target.value);
           }}
-          variant="filled"
+          variant="outlined"
           label="Compound"
         />
         <Button type="submit" color="primary" size="large" variant="contained">
-          Submit
+          Add
         </Button>
       </form>
     </div>

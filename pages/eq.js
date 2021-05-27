@@ -15,6 +15,10 @@ import CompoundsList from "../components/CompoundsList";
 function Equation() {
   const [reactants, setRctn] = useState([]);
   const [products, setProd] = useState([]);
+  const equation = {
+    reactants: [],
+    products: [],
+  };
 
   return (
     <div>
@@ -27,8 +31,8 @@ function Equation() {
             <Typography variant="h5">Add a Reactant</Typography>
             <CompoundForm
               onSubmit={(cmpd) => {
-                reactants.push(cmpd);
-                setRctn(reactants);
+                equation.reactants.push(cmpd);
+                setRctn(equation.reactants);
                 console.log(reactants);
               }}
             />
@@ -40,8 +44,8 @@ function Equation() {
             <Typography variant="h5">Add a Product</Typography>
             <CompoundForm
               onSubmit={(cmpd) => {
-                products.push(cmpd);
-                setProd(products);
+                equation.products.push(cmpd);
+                setProd(equation.products);
               }}
             />
           </CardContent>
