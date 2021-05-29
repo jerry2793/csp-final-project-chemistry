@@ -3,9 +3,11 @@ import {
   Button,
   FormControl,
   FormHelperText,
+  Icon,
   Input,
   TextField,
 } from "@material-ui/core";
+import SendIcon from "@material-ui/icons/Send";
 
 const CompoundForm = ({ onSubmit }) => {
   const [cmpd, setCmpd] = useState("");
@@ -16,7 +18,7 @@ const CompoundForm = ({ onSubmit }) => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          if (cmpd[0] === cmpd[0].toUpperCase()) {
+          if (cmpd.length === 0 || cmpd[0] === cmpd[0].toUpperCase()) {
             onSubmit(cmpd);
             setCmpd("");
             setError("");
@@ -44,8 +46,14 @@ const CompoundForm = ({ onSubmit }) => {
           variant="outlined"
           label="Compound"
         />
-        <Button type="submit" color="primary" size="large" variant="contained">
-          Add
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          size="large"
+          endIcon={<SendIcon />}
+        >
+          OK
         </Button>
       </form>
     </div>
