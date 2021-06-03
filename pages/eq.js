@@ -19,7 +19,7 @@ import CompoundsList from "../components/CompoundsList";
 import { useDispatch, useSelector } from "react-redux";
 import { NEW_PROD, NEW_RCTN } from "../reducers/equation";
 
-import { balance } from "../actions/equation";
+// import { balance } from "../actions/equation";
 
 function Equation() {
   const { reactants, products } = useSelector((state) => state.equation);
@@ -54,27 +54,27 @@ function Equation() {
           </CardContent>
         </Card>
 
-        <Paper className={styles.output}>
-          <Typography variant="h5">Compounds Entered</Typography>
-          <Grid style={{ display: "flex", flexWrap: "wrap", margin: "auto" }}>
-            <Paper style={{ margin: "10px", padding: "10px" }}>
-              <Typography variant="h6">Reactants</Typography>
-              <CompoundsList Icon={AvTimerIcon} list={reactants} />
-            </Paper>
-            <Paper style={{ margin: "10px", padding: "10px" }}>
-              <Typography variant="h6">Products</Typography>
-              <CompoundsList Icon={AlarmOnIcon} list={products} />
-            </Paper>
-            <Button
-              fullWidth
-              variant="contained"
-              onClick={() => setBalanced(balance(reactants, products))}
-            >
-              Balance
-            </Button>
-          </Grid>
-          <Typography></Typography>
-        </Paper>
+//         <Paper className={styles.output}>
+//           <Typography variant="h5">Compounds Entered</Typography>
+//           <Grid style={{ display: "flex", flexWrap: "wrap", margin: "auto" }}>
+//             <Paper style={{ margin: "10px", padding: "10px" }}>
+//               <Typography variant="h6">Reactants</Typography>
+//               <CompoundsList Icon={AvTimerIcon} list={reactants} />
+//             </Paper>
+//             <Paper style={{ margin: "10px", padding: "10px" }}>
+//               <Typography variant="h6">Products</Typography>
+//               <CompoundsList Icon={AlarmOnIcon} list={products} />
+//             </Paper>
+//             <Button
+//               fullWidth
+//               variant="contained"
+//               onClick={() => setBalanced(balance(reactants, products))}
+//             >
+//               Balance
+//             </Button>
+//           </Grid>
+//           <Typography></Typography>
+//         </Paper>
       </main>
     </div>
   );
